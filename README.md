@@ -1,185 +1,136 @@
-# Website Template - Vite + React
+# EGECREW Website Template v2.0
 
-Modern, responsive website template for small businesses. Deploy to Vercel in 60 seconds.
+**Bulletproof Vite + React template for Bodrum business websites.**
 
 ## Features
 
-- ⚡ **Vite** - Lightning fast build tool
-- ⚛️ **React** - Component-based UI
-- 📱 **Responsive** - Works on all devices
-- 🎨 **Beautiful Design** - Gradient, smooth animations
-- 📧 **Contact Form** - Built-in form handling
-- 🔧 **Customizable** - Easy to personalize
+- ✅ **Responsive Design** - Works on mobile (375px) to 4K (2560px+)
+- ✅ **Tailwind CSS** - Utility-first styling with custom design tokens
+- ✅ **Accessibility** - WCAG AA compliant, keyboard navigable
+- ✅ **Performance** - Optimized build, lazy loading, minimal bundle
+- ✅ **Customizable** - CSS variables for easy theming
+- ✅ **SEO Ready** - Proper meta tags, structured data support
 
-## Sections
+## Tech Stack
 
-1. **Header/Nav** - Sticky navigation
-2. **Hero** - Eye-catching banner
-3. **About** - Business description
-4. **Services** - 3 service cards (customizable)
-5. **Gallery** - 4 image placeholders
-6. **Contact** - Contact info + form
-7. **Footer** - Copyright info
+- **Framework**: React 19 + Vite 8
+- **Styling**: Tailwind CSS 3.4 + custom components
+- **Build**: Rolldown (via Vite)
+- **Deployment**: Vercel
 
 ## Quick Start
 
-### 1. Setup
-
 ```bash
-cd website-template
+# Copy template
+cp -r website-template website-my-business
+
+# Install dependencies  
+cd website-my-business
 npm install
+
+# Start dev server
 npm run dev
-```
 
-Visit `http://localhost:5173`
-
-### 2. Customize
-
-Edit `src/App.jsx`:
-- Business name (logo)
-- Hero text
-- Services (titles, descriptions)
-- Contact info (phone, email, address)
-
-### 3. Deploy to Vercel
-
-```bash
-npm run build
-vercel deploy
-```
-
-Or use Vercel UI:
-1. Connect GitHub repo
-2. Import project
-3. Deploy (automatic on push)
-
-## Build
-
-```bash
+# Build for production
 npm run build
 ```
 
-Creates optimized `dist/` folder ready for production.
+## Customization
 
-## Environment
+### 1. Update Business Info
 
-No backend needed. Contact form logs to console.
+Edit `src/App.jsx` and modify the `BUSINESS` object with your business details.
 
-For real email:
-- Use form service (Formspree, Netlify Forms)
-- Add backend API
-- Connect to email service
+### 2. Customize Colors
 
-## Customization Guide
+Edit `:root` variables in `src/index.css`:
 
-### Change Business Name
-
-`src/App.jsx` line 18:
-```jsx
-<div className="logo">Işletmeniz</div>
-```
-
-### Add Real Images
-
-Gallery placeholders → real images:
-```jsx
-<div className="gallery-item">
-  <img src="photo1.jpg" alt="Photo 1" />
-</div>
-```
-
-### Update Contact Info
-
-Find section with:
-```jsx
-<p>+90 (252) XXX XXXX</p>
-<p>info@isletme.com</p>
-<p>Bodrum, Muğla</p>
-```
-
-Replace with actual contact details.
-
-### Change Colors
-
-Edit `src/App.css`:
-- `#667eea` → Primary color (purple)
-- `#764ba2` → Secondary color (darker purple)
-
-Example: Change to blue
 ```css
-/* Change from */
-background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-
-/* To */
-background: linear-gradient(135deg, #0066ff 0%, #0044aa 100%);
+:root {
+  --primary: #667eea;       /* Your primary color */
+  --primary-dark: #5b21b6;  /* Darker shade */
+}
 ```
 
-### Add/Remove Services
+### 3. Add Images
 
-In services grid (line 74), duplicate card:
-```jsx
-<div className="service-card">
-  <div className="service-icon">🎯</div>
-  <h3>Hizmet 1</h3>
-  <p>Açıklamalar ve detaylar</p>
-</div>
+Replace placeholder URLs in the `GALLERY` array with your actual images.
+
+## Design System
+
+### Color Tokens
+
+| Token | Default | Usage |
+|-------|---------|-------|
+| `--primary` | `#667eea` | CTAs, accents |
+| `--primary-dark` | `#5b21b6` | Hover states |
+| `--bg-light` | `#f8fafc` | Section backgrounds |
+| `--text` | `#1e293b` | Body text |
+| `--text-muted` | `#64748b` | Secondary text |
+
+### Responsive Breakpoints
+
+| Breakpoint | Min Width | Container |
+|------------|-----------|-----------|
+| Default | 0px | 100% |
+| md | 768px | 768px |
+| lg | 1024px | 1024px |
+| xl | 1280px | 1200px |
+| 3xl | 1920px | 1600px |
+| 4xl | 2560px | 1800px |
+
+### Components
+
+- `.btn-primary` - Primary action button
+- `.btn-secondary` - Secondary outlined button  
+- `.card` - Card with shadow and hover effect
+- `.section` - Section with responsive padding
+- `.input` - Styled form input
+- `.badge` - Small colored pill
+
+## Project Structure
+
 ```
-
-## File Structure
-
-```
-website-template/
 ├── src/
-│   ├── App.jsx      # Main component
-│   ├── App.css      # Styles
-│   └── main.jsx     # Entry point
-├── public/          # Static files
-├── index.html       # HTML template
-├── vite.config.js   # Vite config
-└── package.json     # Dependencies
+│   ├── App.jsx        # Main component (customize here)
+│   ├── index.css      # Design system
+│   └── main.jsx       # Entry point
+├── docs/
+│   └── BEST_PRACTICES.md
+├── tailwind.config.js
+├── vite.config.js
+└── package.json
 ```
 
-## Performance
+## Deployment
 
-- **Vite** optimized builds
-- **CSS** scoped, minimal
-- **No external libraries** - lightweight
-- **Production bundle** ~30KB
-
-## Troubleshooting
-
-### Port already in use
+### Vercel (Recommended)
 
 ```bash
-npm run dev -- --port 3000
+# Install Vercel CLI
+npm i -g vercel
+
+# Deploy
+vercel --prod
 ```
 
-### Images not loading
+### Manual
 
-Make sure images are in `public/` folder or use absolute URLs.
-
-### Styling issues
-
-Clear cache:
 ```bash
-rm -rf node_modules dist
-npm install
-npm run dev
+npm run build
+# Upload dist/ folder to any static host
 ```
 
-## Next Steps
+## Documentation
 
-1. **Add real content** - Replace placeholders
-2. **Add images** - Upload to gallery
-3. **Setup email** - Connect form to email service
-4. **Custom domain** - Point domain to Vercel
-5. **Analytics** - Add Google Analytics
-6. **SEO** - Update meta tags
+See [docs/BEST_PRACTICES.md](docs/BEST_PRACTICES.md) for detailed guidelines on:
+
+- Responsive design rules
+- Accessibility checklist
+- Performance optimization
+- SEO configuration
+- Common fixes
 
 ## License
 
-Free to use and modify.
-
----
-
-Built with Vite + React. Deploy anywhere. 🚀
+MIT - EGECREW 2026
